@@ -1,35 +1,34 @@
-const {expect} = require('@playwright/test')
+const { expect } = require('@playwright/test')
 
-export class E2E_Page  {
-
+// Page Object Model for E2E flow
+class E2E_Page {
     constructor(page) {
-        this.page=page
-        this.username=page.locator('#user-name')
-        this.password=page.locator('#password')
-        this.login=page.locator('#login-button')
-        this.inventory_item_name=page.locator('.inventory_item_name')
-        this.addToCart=page.locator('#add-to-cart')
-        this.shoppingcartlink=page.locator('.shopping_cart_link')
-        this.checkout=page.locator('#checkout')
-        this.fname=page.locator('#first-name')
-        this.lname=page.locator('#last-name')
-        this.pcode=page.locator('#postal-code')
-        this.continue=page.locator('#continue')
-        this.finish=page.locator('#finish')
-
+        this.page = page
+        this.username = page.locator('#user-name')
+        this.password = page.locator('#password')
+        this.login = page.locator('#login-button')
+        this.inventory_item_name = page.locator('.inventory_item_name')
+        this.addToCart = page.locator('#add-to-cart')
+        this.shoppingcartlink = page.locator('.shopping_cart_link')
+        this.checkout = page.locator('#checkout')
+        this.fname = page.locator('#first-name')
+        this.lname = page.locator('#last-name')
+        this.pcode = page.locator('#postal-code')
+        this.continue = page.locator('#continue')
+        this.finish = page.locator('#finish')
     }
 
-    async goto(){
+    async goto() {
         await this.page.goto('https://www.saucedemo.com/')
     }
 
-    async Login(){
+    async Login() {
         await this.username.fill('standard_user')
         await this.password.fill('secret_sauce')
         await this.login.click()
     }
 
-    async RemaingFlow(page){
+    async RemaingFlow() {
         await this.inventory_item_name.first().click()
         await this.addToCart.click()
         await this.shoppingcartlink.click()
@@ -40,8 +39,9 @@ export class E2E_Page  {
         await this.continue.click()
     }
 
-    async Finish(){
+    async Finish() {
         await this.finish.click()
     }
 }
-module.exports = E2E_Page ;
+
+module.exports = E2E_Page

@@ -1,14 +1,17 @@
 {
-  "name": "playwright_automation",
+  "name": "playwright-e2e-project",
   "version": "1.0.0",
+  "description": "Industry-level Playwright E2E automation project",
   "main": "index.js",
-  "scripts": {},
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:report": "npx playwright show-report",
+    "lint": "echo \"No linter configured\""
+  },
+  "author": "Mahesh Gachale",
+  "license": "MIT",
   "devDependencies": {
-    "@playwright/test": "^1.46.0",
-    "@types/node": "^22.2.0"
+    "@playwright/test": "^1.43.0"
   }
 }

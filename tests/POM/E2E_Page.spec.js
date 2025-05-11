@@ -1,14 +1,13 @@
-const E2E_Page = require('./E2E_Page');
-import {test, expect} from '@playwright/test'
+const { test, expect } = require('@playwright/test')
+const E2E_Page = require('./E2E_Page')
 
-test('E2E_Test', async ({ page }) => {
-
-    const LoginPage = new E2E_Page(page);
-
-    await LoginPage.goto()
-    await LoginPage.Login()
-    await LoginPage.RemaingFlow()
+// E2E test using Page Object Model
+test('E2E: Complete purchase flow (POM)', async ({ page }) => {
+    const loginPage = new E2E_Page(page)
+    await loginPage.goto()
+    await loginPage.Login()
+    await loginPage.RemaingFlow()
     await expect(page).toHaveURL('https://www.saucedemo.com/checkout-step-two.html')
-    await LoginPage.Finish()
+    await loginPage.Finish()
     await expect(page).toHaveURL('https://www.saucedemo.com/checkout-complete.html')
-});
+})
